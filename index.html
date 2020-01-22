@@ -34,8 +34,16 @@
   </div>
 
   <script id="shader" type="shader">
-    void main(){
-      gl_FragColor = vec4(gl_FragCoord.x/1000.0, 0.0, 0.0, 0.5);
+    // void main(){
+    //   gl_FragColor = vec4(gl_FragCoord.x/1000.0, 0.0, 0.0, 0.5);
+    // }
+    precision mediump float;
+    varying vec2 vTextureCoord;
+    uniform sampler2D uSampler;
+    void main(void) {
+      vec4 color = texture2D(uSampler, vTextureCoord);
+      color.r = 0.5;     
+      gl_FragColor = color;
     }
   </script>
 
